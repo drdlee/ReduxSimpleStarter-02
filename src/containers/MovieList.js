@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'; // connect is for connecting the redux reducer to react component which makes a container
+import {selectMovie} from '../actions/index';
+import {bindActionCreators} from 'redux';
 
 class MovieList extends Component {
   renderList(){
     return this.props.movies.map((movie)=>{
       return (
-        <li key={movie.title}>{movie.title}</li>
+        <li key={movie.title} onClick={()=>this.props.selectMovie(movie)}>{movie.title}</li>
       )
     });
   } // this is a stateless component use for map out the list
@@ -25,4 +27,8 @@ function mapStateToProps(state){
   }
 } // this is to map the redux states in reducer to props for react to use
 
-export default connect (mapStateToProps)(MovieList); // the use of connect, connecting reducer to component
+function mapDispatchtoProps(dispatch){
+  return bindActionCreators({selectMovie: selectMovie}, dispatch);
+}
+
+export default connect (mapStateToProps, mapDispatchtoProps)(MovieList); // the use of connect, connecting reducer to component
