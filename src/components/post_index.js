@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { fetchPosts } from '../actions/index';
+import { connect } from 'react-redux';
 
 class PostIndex extends Component {
+  componentWillMount(){
+    console.log(this.props.fetchPosts());  // remember the Action is returning a Promise
+}
+
   render(){
     return (
       <div>
@@ -12,4 +18,4 @@ class PostIndex extends Component {
   }
 }
 
-export default PostIndex;
+export default connect (null, { fetchPosts })(PostIndex);
