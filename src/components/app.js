@@ -5,6 +5,7 @@ export default class App extends Component {
     return (
       <div>
         React Simple Starter2.1
+        {this.props.children}
       </div>
     );
   }
