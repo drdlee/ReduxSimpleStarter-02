@@ -4,7 +4,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        React Simple Starter
+        React Simple Starter2.1
       </div>
     );
   }
